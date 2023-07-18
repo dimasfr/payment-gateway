@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'InterUI-Bold';
+  src: url('./../fonts/Inter-UI-Bold.otf');
+}
+
+@font-face {
+  font-family: 'InterUI-Medium';
+  src: url('./../fonts/Inter-UI-Medium.otf');
+}
+
+@font-face {
+  font-family: 'InterUI-Reguler';
+  src: url('./../fonts/Inter-UI-Regular.otf');
+}
