@@ -7,7 +7,9 @@
                 <p>Your order will be delivered {{ formPayment.payment_estimations[formPayment.payment_chosen_estimation] }} with {{ formPayment.payment_couriers[formPayment.payment_chosen_courier] }}</p>
                 <span class="clickable-span home" @click="reset()">&larr; Go to homepage</span>
             </div>
-            <app-summary></app-summary>
+            <div class="finish__summary">
+                <app-summary></app-summary>
+            </div>
         </div>
     </div>
 </template>
@@ -173,6 +175,11 @@ export default defineComponent({
                 font-size: 15px;
                 color: #616161;
             }
+        }
+        .finish__summary{
+            height: 100%;
+            border-left: 2px solid #fff3e5;
+            padding-left: 20px;
         }
     }
 }
