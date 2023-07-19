@@ -18,7 +18,7 @@
 import { defineComponent, computed, ref } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
-import summary from './Summary.vue'
+import summary from '@/components/Summary.vue'
 
 export default defineComponent({
     components: {
@@ -113,85 +113,80 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss">
-@mixin if-lessThan-768px{
-    @media (max-width: 768px){
-        @content;
-    }
-}
-.finish{
-    padding: 40px;
-    height: 100%;
-    @include if-lessThan-768px{
-        padding: 25px;
-        height: auto;
-    }
-    .finish__grid{
-        display: grid;
-        grid-template-columns: 3fr 2fr 2fr;
-        height: 65vh;
-        grid-gap: 25px;
-        margin-top: 20px;
-        align-items: center;
-        justify-items: center;
-        @include if-lessThan-768px{
-            grid-template-columns: 1fr;
-            grid-gap: 5px;
-            height: 100%;
-        }
-        .finish__details{
-            grid-column: 1/3;
-            @include if-lessThan-768px{
-                margin-bottom: 1px;
-            }
-            h1{
-                padding-bottom: -5px;
-                margin-bottom: 25px;
-                font-weight: bold;
-                color: #ff8a00;
-                font-size: 27px;
-                position: relative;
-                z-index: 1;
-                &::after{
-                    position: absolute;
-                    content: ' ';
-                    width: 8em;
-                    height: 7px;
-                    background: #e9e9ec;
-                    left: 0;
-                    z-index: -1;
-                    bottom: 2px;
-                }
-            }
-            h2{
-                font-size: 18px;
-                font-weight: bold;
-            }
-            p{
-                font-size: 15px;
-                margin-bottom: 20px;
-            }
-            .home{
-                font-size: 15px;
-                color: #616161;
-            }
-        }
-        .finish__summary{
-            height: 100%;
-            border-left: 2px solid #fff3e5;
-            padding-left: 20px;
-        }
-    }
-}
-.clickable-span {
-    cursor: pointer;
-}
+<style lang="stylus" scoped>
+mobile()
+  @media (max-width: 768px)
+    {block}
 
-.clickable-span {
-    color: #007bff;
-}
+.finish
+  padding: 40px
+  height: 100%
 
-.clickable-span:hover {
-    color: #0056b3;
-}
+  +mobile()
+    padding: 25px
+    height: auto
+
+  .finish__grid
+    display: grid
+    grid-template-columns: 3fr 2fr 2fr
+    height: 65vh
+    grid-gap: 25px
+    margin-top: 20px
+    align-items: center
+    justify-items: center
+
+    +mobile()
+      grid-template-columns: 1fr
+      grid-gap: 5px
+      height: 100%
+
+    .finish__details
+      grid-column: 1/3
+
+      +mobile()
+        margin-bottom: 1px
+
+      h1
+        padding-bottom: -5px
+        margin-bottom: 25px
+        font-weight: bold
+        color: #ff8a00
+        font-size: 27px
+        position: relative
+        z-index: 1
+
+        &::after
+          position: absolute
+          content: ' '
+          width: 8em
+          height: 7px
+          background: #e9e9ec
+          left: 0
+          z-index: -1
+          bottom: 2px
+
+      h2
+        font-size: 18px
+        font-weight: bold
+
+      p
+        font-size: 15px
+        margin-bottom: 20px
+
+      .home
+        font-size: 15px
+        color: #616161
+
+    .finish__summary
+      height: 100%
+      border-left: 2px solid #fff3e5
+      padding-left: 20px
+
+.clickable-span
+  cursor: pointer
+  color: #007bff
+
+  &:hover
+    color: #0056b3
+
 </style>

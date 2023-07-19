@@ -47,7 +47,7 @@
 <script>
 import { defineComponent, computed, ref } from 'vue';
 import { useStore } from 'vuex';
-import summary from './Summary.vue'
+import summary from '@/components/Summary.vue'
 
 export default defineComponent({
     components: {
@@ -94,125 +94,119 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss">
-    @mixin if-lessThan-768px{
-		@media (max-width: 768px){
-			@content;
-		}
-	}
-    .payment{
-        padding: 40px;
-        height: 100%;
-        @include if-lessThan-768px{
-            padding: 25px;
-        }
-        .fa{
-            font-size: 13px;
-            margin-right: 10px;
-             @include if-lessThan-768px{
-                font-size: 12px;
-            }
-        }
-        .payment__out{
-            display: flex;
-            align-items: center;
-            color: #656567;
-             @include if-lessThan-768px{
-                font-size: 12px;
-            }
-        }
-        .payment__grid{
-            display: grid;
-            height: 65vh;
-            grid-template-columns: 3fr 2fr 2fr;
-            grid-gap: 25px;
-            margin-top: 20px;
-            @include if-lessThan-768px{
-                grid-template-columns: 1fr;
-                grid-gap: 5px;
-                height: 100%;
-            }
-            .payment__details{
-              grid-column: 1/3;
-                h1{
-                    padding-bottom: -5px;
-                    margin-bottom: 25px;
-                    font-weight: bold;
-                    color: #ff8a00;
-                    font-size: 27px;
-                    position: relative;
-                    z-index: 1;
-                    @include if-lessThan-768px{
-                        font-size: 20px;
-                    }
-                    &::after{
-                        position: absolute;
-                        content: ' ';
-                        width: 8em;
-                        height: 7px;
-                        background: #e9e9ec;
-                        left: 0;
-                        z-index: -1;
-                        bottom: 2px;
-                    }
-                }
-                .payment__service{
-                    width: 85%;
-                    display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    grid-gap: 20px;
-                    margin-bottom: 65px;
-                     @include if-lessThan-768px{
-                        width: 100%;
-                         grid-gap: 5px;
-                    }
-                    .payment__courier{
-                        height: 55px;
-                        display: grid;
-                        align-items: center;
-                        justify-items: center;
-                        border: 1px solid #999;
-                        cursor: pointer;
-                        position: relative;
-                        p{
-                            font-size: 13px;
-                            @include if-lessThan-768px{
-                               font-size: 10px;
-                            }
-                            
-                        }
-                    }
-                     .activePanel{
-                        border: 1px solid #19c874;
-                        background: #e5fce9;
-                        &::after{
-                          position: absolute;
-                          content: ' ';
-                          width: 10px;
-                          height: 5px;
-                          border-left: 2px solid #19c874;
-                          border-bottom: 2px solid #19c874;
-                          right: 10px;
-                          top: 20px;
-                          transform: rotate(-45deg);
-                        }
-                    }
-                }
-                .shipment__service{
-                    @extend .payment__service;
-                    .shipment__courier{
-                        @extend .payment__courier
-                    }
-                    .activePanelpay{
-                        @extend .activePanel;
-                    }
-                }
-            }
-            .payment__summary{
-              height: 100%;
-               border-left: 2px solid #fff3e5;
-               padding-left: 20px;
-            }
-        }
-    }
+<style lang="stylus">
+mobile()
+  @media (max-width: 768px)
+    {block}
+
+.payment
+  padding: 40px
+  height: 100%
+
+  +mobile()
+    padding: 25px
+
+  .fa
+    font-size: 13px
+    margin-right: 10px
+
+    +mobile()
+      font-size: 12px
+
+  .payment__out
+    display: flex
+    align-items: center
+    color: #656567
+
+    +mobile()
+      font-size: 12px
+
+  .payment__grid
+    display: grid
+    height: 65vh
+    grid-template-columns: 3fr 2fr 2fr
+    grid-gap: 25px
+    margin-top: 20px
+
+    +mobile()
+      grid-template-columns: 1fr
+      grid-gap: 5px
+      height: 100%
+
+    .payment__details
+      grid-column: 1/3
+      h1
+        padding-bottom: -5px
+        margin-bottom: 25px
+        font-weight: bold
+        color: #ff8a00
+        font-size: 27px
+        position: relative
+        z-index: 1
+
+        +mobile()
+          font-size: 20px
+
+        &::after
+          position: absolute
+          content: ' '
+          width: 8em
+          height: 7px
+          background: #e9e9ec
+          left: 0
+          z-index: -1
+          bottom: 2px
+
+      .payment__service
+        width: 85%
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+        grid-gap: 20px
+        margin-bottom: 65px
+
+        +mobile()
+          width: 100%
+          grid-gap: 5px
+
+        .payment__courier
+          height: 55px
+          display: grid
+          align-items: center
+          justify-items: center
+          border: 1px solid #999
+          cursor: pointer
+          position: relative
+          p
+            font-size: 13px
+
+            +mobile()
+              font-size: 10px
+
+        .activePanel
+          border: 1px solid #19c874
+          background: #e5fce9
+          &::after
+            position: absolute
+            content: ' '
+            width: 10px
+            height: 5px
+            border-left: 2px solid #19c874
+            border-bottom: 2px solid #19c874
+            right: 10px
+            top: 20px
+            transform: rotate(-45deg)
+
+      .shipment__service
+        @extend .payment__service
+        .shipment__courier
+          @extend .payment__courier
+
+        .activePanelpay
+          @extend .activePanel
+
+    .payment__summary
+      height: 100%
+      border-left: 2px solid #fff3e5
+      padding-left: 20px
+
 </style>

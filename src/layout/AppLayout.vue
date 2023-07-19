@@ -75,93 +75,92 @@ watch(route, async () => {
     </div>
 </template>
 
-<style lang="scss" scoped>
-  @mixin if-lessThan-768px{
-		@media (max-width: 768px){
-			@content;
-		}
-	}
-  .layout{
-    width: 100%;
-    height: 100vh;
-    background: #fffae6;
-    @include if-lessThan-768px{
-        position: relative;
-        height: auto;
-    }
-    .layout__container{
-      width: 70%;
-      position: relative;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      @include if-lessThan-768px{
-        width: 95%;
-        position: static;
-        top: 0;
-        left: 0;
-        transform: none;
-        margin: 0 auto;
-      }
+<style lang="stylus" scoped>
+// Stylus mixin
+mobile()
+  @media (max-width: 768px)
+    {block}
 
-      .layout__breadcrumbs{
-        position: relative;
-        transform: translateY(50%);
-        width: 45%;
-        background: #fffae6;
-        padding: 0 30px 20px 30px;
-        border-radius: 30px;
-        margin: 0 auto; 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        @include if-lessThan-768px{
-          width: 95%;
-          font-size: 12px;
-          padding: 5px;
-        }
-        li{
-          display: flex;
-          align-items: center;
-          color: #ff8a00;
-         p{
-          background: #ffdfba;
-          width: 25px;
-          height: 25px;
-          border-radius: 50%;
-          text-align: center;
-          padding: 1px;
-          margin-right: 5px;
-          color: #ff8a00;
-          @include if-lessThan-768px{
-            width: 20px;
-            height: 20px;
-             margin-right: 2px;
-          }
-         }
-         .activelink{
-           background: #ff8a00;
-           color: #fff;
-         }
-        }
-        span{
-          width: 8px;
-          height: 8px;
-          border-right: 2px solid #ff8a00;
-          border-bottom: 2px solid #ff8a00;
-          transform: rotate(-45deg);
-         }
-      }
-      .layout__content{
-        width: 100%;
-        height: 80vh;
-        background: #fff;
-        box-shadow: 0px 7px 30px #fbebd6;
-        border-radius: 5px;
-        @include if-lessThan-768px{
-          height: auto;
-        }
-      }
-    }
-  }
+.layout
+  width: 100%
+  height: 100vh
+  background: #fffae6
+
+  +mobile()
+    position: relative
+    height: auto
+
+  .layout__container
+    width: 70%
+    position: relative
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+    +mobile()
+      width: 95%
+      position: static
+      top: 0
+      left: 0
+      transform: none
+      margin: 0 auto
+
+    .layout__breadcrumbs
+      position: relative
+      transform: translateY(50%)
+      width: 45%
+      background: #fffae6
+      padding: 0 30px 20px 30px
+      border-radius: 30px
+      margin: 0 auto
+      display: flex
+      justify-content: space-between
+      align-items: center
+
+      +mobile()
+        width: 95%
+        font-size: 12px
+        padding: 5px
+
+      li
+        display: flex
+        align-items: center
+        color: #ff8a00
+
+        p
+          background: #ffdfba
+          width: 25px
+          height: 25px
+          border-radius: 50%
+          text-align: center
+          padding: 1px
+          margin-right: 5px
+          color: #ff8a00
+
+          +mobile()
+            width: 20px
+            height: 20px
+            margin-right: 2px
+
+        .activelink
+          background: #ff8a00
+          color: #fff
+
+      span
+        width: 8px
+        height: 8px
+        border-right: 2px solid #ff8a00
+        border-bottom: 2px solid #ff8a00
+        transform: rotate(-45deg)
+
+    .layout__content
+      width: 100%
+      height: 80vh
+      background: #fff
+      box-shadow: 0px 7px 30px #fbebd6
+      border-radius: 5px
+
+      +mobile()
+        height: auto
+
 </style>
