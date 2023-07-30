@@ -1,1 +1,1 @@
-# jakmall-payment-gateway
+# payment-gateway
